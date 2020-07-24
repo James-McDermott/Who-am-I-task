@@ -19,12 +19,11 @@ public class HttpRequestTest {
 
     @Test
     public void smokeTestShouldReturn200() throws Exception {
-        StringEntity entity = new StringEntity("{ \"first_name\":\"fassddaa\", \"country_code\":\"US\" }", ContentType.APPLICATION_JSON);
+        StringEntity entity = new StringEntity("{ \"first_name\":\"John\", \"country_code\":\"US\" }", ContentType.APPLICATION_JSON);
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost request = new HttpPost("http://localhost:8080/whoami");
         request.setEntity(entity);
         HttpResponse response = httpClient.execute(request);
-        System.out.println(response.getStatusLine().getStatusCode());
         assert(response.getStatusLine().getStatusCode() == 200);
     }
 
@@ -35,7 +34,6 @@ public class HttpRequestTest {
         HttpPost request = new HttpPost("http://localhost:8080/whoami");
         request.setEntity(entity);
         HttpResponse response = httpClient.execute(request);
-        System.out.println(response.getStatusLine().getStatusCode());
         assert(response.getStatusLine().getStatusCode() == 400);
     }
 
