@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FullGuess {
+public class WhoAmIResponse {
     private String full_name;
     private String country_code;
     private int age;

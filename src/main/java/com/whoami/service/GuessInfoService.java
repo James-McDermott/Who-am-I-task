@@ -3,14 +3,11 @@ package com.whoami.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whoami.adapter.HttpClientWrapper;
 import com.whoami.model.AgeGuess;
-import com.whoami.model.FullGuess;
+import com.whoami.model.WhoAmIResponse;
 import com.whoami.model.GenderGuess;
-import org.apache.http.HttpEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.Configuration;
 import java.io.IOException;
 
 @Service
@@ -22,7 +19,7 @@ public class GuessInfoService {
     private String genderizeUrl;
     private ObjectMapper objectMapper;
 
-    public FullGuess getGuesses(String name, String countryCode) {
+    public WhoAmIResponse getGuesses(String name, String countryCode) {
         AgeGuess ageGuess = null;
         GenderGuess genderGuess = null;
         ObjectMapper objectMapper = new ObjectMapper();
@@ -34,7 +31,7 @@ public class GuessInfoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return FullGuess.builder()
+        return WhoAmIResponse.builder()
                 .full_name(name)
                 .country_code(countryCode)
                 .age(ageGuess.getAge())
