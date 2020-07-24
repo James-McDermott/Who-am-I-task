@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class WhoAmIResponse {
-    private String full_name;
+    private String first_name;
     private String country_code;
     private int age;
     private String gender;
